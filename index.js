@@ -1,6 +1,7 @@
 var cool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
+var router = express.router();
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -18,7 +19,7 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-app.post('/test', function(request, response) {
+router.post('/test', function(request, response) {
   response.send(cool());
 });
 
