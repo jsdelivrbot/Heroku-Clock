@@ -1,2 +1,2 @@
-web: node --debug=5858 index.js
+web: node index.js
 clock: node clock.js
