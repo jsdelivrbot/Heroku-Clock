@@ -29,7 +29,7 @@ const test1 = () => {
 
 const job3 = new CronJob({
   cronTime: '*/5 * * * * *',
-  onTick: test,
+  onTick: test1,
   start: true,
   timeZone: 'America/Los_Angeles'
 });
