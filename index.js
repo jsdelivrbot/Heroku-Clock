@@ -1,7 +1,6 @@
 var cool = require('cool-ascii-faces');
-var express = require('express');
 const throng = require('throng');
-var app = express();
+
 
 var WORKERS = process.env.WEB_CONCURRENCY || 1;
 
@@ -12,6 +11,10 @@ throng({
 
 
 function start() {
+  var express = require('express');
+  var app = express();
+
+
   app.set('port', (process.env.PORT || 5000));
 
   app.use(express.static(__dirname + '/public'));
