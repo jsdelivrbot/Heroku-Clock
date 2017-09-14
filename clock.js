@@ -24,11 +24,11 @@ const job2 = new CronJob({
 });
 
 const test1 = () => {
-  console.log('Test 5sec');
+  console.log('Test 10sec');
 };
 
 const job3 = new CronJob({
-  cronTime: '*/5 * * * * *',
+  cronTime: '*/10 * * * * *',
   onTick: test1,
   start: true,
   timeZone: 'America/Los_Angeles'
