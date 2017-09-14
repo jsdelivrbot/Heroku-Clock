@@ -22,3 +22,14 @@ const job2 = new CronJob({
   start: true,
   timeZone: 'America/Los_Angeles'
 });
+
+const test1 = () => {
+  console.log('Test 5sec');
+};
+
+const job3 = new CronJob({
+  cronTime: '*/5 * * * * *',
+  onTick: test,
+  start: true,
+  timeZone: 'America/Los_Angeles'
+});
