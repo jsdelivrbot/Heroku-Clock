@@ -1,7 +1,16 @@
 var cool = require('cool-ascii-faces');
 var express = require('express');
+const throng = require('throng');
 var app = express();
-var router = express.router();
+
+var WORKERS = process.env.WEB_CONCURRENCY || 1;
+
+throng({
+  workers: WORKERS,
+  lifetime: Infinity
+}, start);
+
+
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -19,10 +28,8 @@ app.get('/cool', function(request, response) {
   response.send(cool());
 });
 
-router.post('/test', function(request, response) {
-  response.send(cool());
-});
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
+function start() {
+  app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+  });
+}
