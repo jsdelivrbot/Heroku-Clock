@@ -7,14 +7,14 @@ if(cluster.isMaster) {
   for (let i = 0; i < WORKERS; i++) {
     cluster.fork();
   }
-}
 
-// throng({
-//   workers: WORKERS,
-//   lifetime: Infinity
-// }, start);
-//
-// function start() {
+
+throng({
+  workers: WORKERS,
+  lifetime: Infinity
+}, start);
+
+function start() {
   const express = require('express');
   const app = express();
 
@@ -39,4 +39,4 @@ if(cluster.isMaster) {
   app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
   });
-// }
+}
