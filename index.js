@@ -7,6 +7,7 @@ if(cluster.isMaster) {
   for (let i = 0; i < WORKERS; i++) {
     cluster.fork();
   }
+}
 
 
 throng({
