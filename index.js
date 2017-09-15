@@ -3,21 +3,20 @@ const throng = require('throng');
 const cluster = require('cluster');
 
 const WORKERS = process.env.WEB_CONCURRENCY || 1;
-if(cluster.isMaster) {
-  for (let i = 0; i < WORKERS; i++) {
-    cluster.fork();
-  }
-}
+// if(cluster.isMaster) {
+//   for (let i = 0; i < WORKERS; i++) {
+//     cluster.fork();
+//   }
+// }
 
 throng({
   workers: WORKERS,
   lifetime: Infinity
 }, start);
 
-
 function start() {
-  var express = require('express');
-  var app = express();
+  const express = require('express');
+  const app = express();
 
 
   app.set('port', (process.env.PORT || 5000));
