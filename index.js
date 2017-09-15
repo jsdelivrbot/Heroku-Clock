@@ -1,8 +1,11 @@
-var cool = require('cool-ascii-faces');
+const cool = require('cool-ascii-faces');
 const throng = require('throng');
+const cluster = require('cluster');
 
-
-var WORKERS = process.env.WEB_CONCURRENCY || 1;
+const WORKERS = process.env.WEB_CONCURRENCY || 1;
+for (let i = 0; i < WORKERS; i++) {
+  cluster.fork();
+}
 
 throng({
   workers: WORKERS,
