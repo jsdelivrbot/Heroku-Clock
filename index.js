@@ -3,8 +3,10 @@ const throng = require('throng');
 const cluster = require('cluster');
 
 const WORKERS = process.env.WEB_CONCURRENCY || 1;
-for (let i = 0; i < WORKERS; i++) {
-  cluster.fork();
+if(cluster.isMaster) {
+  for (let i = 0; i < WORKERS; i++) {
+    cluster.fork();
+  }
 }
 
 throng({
