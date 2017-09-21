@@ -16,12 +16,13 @@ const test = () => {
   console.log('Test 1sec');
 };
 
-const job2 = new CronJob({
-  cronTime: '*/1 * * * * *',
-  onTick: test,
-  start: true,
-  timeZone: 'America/Los_Angeles'
-});
+const job2 = new CronJob(
+  '*/1 * * * * *',
+  test,
+  null,
+  true,
+  'America/Los_Angeles'
+);
 
 const test1 = () => {
   console.log('Test 10sec');
